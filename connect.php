@@ -22,11 +22,10 @@
 		/*Check if the password given is compatible with the password in database.
 			if both are equal "Incorrect username/password" msg is prompted
 			else, welcome msg should be prompted.*/
-		//$length = count($row);
-		// if($row['password'] != $password){ 
-		// 	echo "Incorrect Username/password.";
-		// }else
-		echo "Welcome ".$row['firstname']." ".$row['lastname']." :)"; //Welcome msg
+		if($row['password'] != $password){ 
+			echo "Incorrect Username/password.";
+		}else
+			echo "Welcome ".$row['firstname']." ".$row['lastname']." :)"; //Welcome msg
 		
 	}
 	

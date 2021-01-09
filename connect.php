@@ -2,7 +2,7 @@
 
 	/* checks database connected safely or not*/
 	// Database connection
-	$conn = new mysqli('localhost','root','','data');
+	$conn = new mysqli('localhost','root','','login');
 	if($conn->connect_error){
 		echo "$conn->connect_error";
 		die("Connection Failed : ". $conn->connect_error);
@@ -20,7 +20,10 @@
 		/*Check if the password given is compatible with the password in database.
 			if both are equal "Incorrect username/password" msg is prompted
 			else, welcome msg should be prompted.*/
-		if($row['password'] != $password){ 
+		if(mysqli_num_rows($result) == 0){
+			echo "There is no account with this email, Please Sign up.".'<br>'.'<a href = "Register.html">Sign Up</a>';
+		}
+		else if($row['password'] != $password){ 
 			echo "Incorrect Username/password.".'<br>'.'<a href = "ForgetPassword.html">Forgot Password</a>';
 		}else
 			echo "Welcome ".$row['firstname']." ".$row['lastname']." :)"; //Welcome msg
